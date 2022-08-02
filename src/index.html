@@ -1,37 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather App</title>
-</head>
-
-<body>
-  <div class="container">
-    <nav class="nav">
-      <div class="nav-logo">W</div>
-      <form class="search-bar">
-        <input type="text" minlength="1" placeholder="Write the city name">
-        <button type="submit">Search</button>
-      </form>
-      <div class="nav-links">
-        <a href="https://github.com">Repo</a>
+  <body>
+    <div class="container">
+      <nav class="nav">
+        <h1 class="rainbow nav-logo">Weather</h1>
+        <form class="search-bar">
+          <input
+            class="search-bar__input"
+            type="text"
+            pattern=".{2,}"
+            placeholder="Type the city name"
+          />
+          <button id="submit-btn" type="submit">Search</button>
+        </form>
+        <div class="nav-links">
+          <a
+            href="https://github.com/kaitakami/weather-app"
+            class="nav__link"
+            target="_blank"
+            rel="”noopener"
+            noreferrer”
+            >Repo</a
+          >
+          <!-- °C -->
+          <button id="mode-btn">Change to °F</button>
+        </div>
+      </nav>
+      <div class="info-displayer-container">
+        <div class="info-displayer">
+          <span class="error-message"></span>
+          <h2 class="location-name"></h2>
+          <p class="location-temp info__text"></p>
+          <p class="location-feels info__text"></p>
+          <p class="location-description info__text"></p>
+          <p class="location-humidity info__text"></p>
+          <p class="location-pressure info__text"></p>
+          <!-- Loader -->
+          <div class="loader hidden">
+            <div></div>
+            <div></div>
+          </div>
+        </div>
       </div>
-    </nav>
-    <div class="info-displayer">
-      <h2 class="location-name"></h2>
-      <p class="location-temp  info__text"></p>
-      <p class="location-feels  info__text"></p>
-      <p class="location-description info__text"></p>
-      <p class="location-humidity  info__text"></p>
-      <p class="location-pressure  info__text"></p>
-
-
-      
     </div>
-  </div>
-</body>
-
+  </body>
 </html>

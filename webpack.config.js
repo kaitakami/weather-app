@@ -11,6 +11,17 @@ const ruleForHtml = {
   loader: "html-loader"
 }
 
+const ruleForBabel = {
+  test: /\.m?js$/,
+  exclude: /(node_modules|bower_components)/,
+  use: {
+    loader: 'babel-loader',
+    options: {
+      presets: ['@babel/preset-env']
+    }
+  }
+}
+
 module.exports = (env, argv) => {
   const { mode } = argv
   const isProduction = mode === 'production'
@@ -23,7 +34,8 @@ module.exports = (env, argv) => {
     module: {
       rules: [
         ruleForStyles,
-        ruleForHtml
+        ruleForHtml,
+        ruleForBabel
       ]
     },
     experiments: {

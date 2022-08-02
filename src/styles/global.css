@@ -1,15 +1,284 @@
 :root {
-  --main-text-color: #;
-  --secondary-text-color: #;
-  --main-background-color: #;
-  --secondary-background-color: #;
+  --main-text-color: #f1f1f1;
+  --main-background-color: rgba(45, 45, 45, 0.6);
+  --secondary-background-color: rgb(45, 45, 45);
 }
 
 * {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 body {
-  height: 100vh;
-  background: url(https://i.chzbgr.com/full/7952007680/h647A11E7/when-someones-phone-goes-off-during-class-and-they-answer-it) no-repeat center center / cover;
+  min-height: 100vh;
+  background: url(https://c.tenor.com/3ECCsbAB_yYAAAAC/guanajuato-antojitos.gif)
+    no-repeat center center / cover;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+/* Rainbow Logo */
+.rainbow {
+  text-align: center;
+  font-size: 32px;
+  animation: colorRotate 6s linear 0s infinite;
+}
+
+@keyframes colorRotate {
+  from {
+    color: #6666ff;
+  }
+
+  10% {
+    color: #0099ff;
+  }
+
+  50% {
+    color: #00ff00;
+  }
+
+  75% {
+    color: #ff3399;
+  }
+
+  100% {
+    color: #6666ff;
+  }
+}
+
+.search-bar {
+  display: flex;
+  gap: 3px;
+}
+
+.search-bar__input {
+  max-width: 240px;
+  width: 100%;
+}
+
+.search-bar__input,
+#submit-btn,
+#mode-btn {
+  color: var(--main-text-color);
+  background-color: var(--main-background-color);
+  padding: 12px 16px;
+  border-radius: 4px;
+  opacity: 0.8;
+  border: none;
+  outline: none;
+  transition: all 200ms ease-in-out;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.search-bar__input:focus,
+#submit-btn:hover,
+#mode-btn:hover {
+  background-color: var(--secondary-background-color);
+  opacity: 1;
+}
+
+#submit-btn:hover {
+  transform: scale(1.01);
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav__link {
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  font-weight: 500;
+  animation: colorRotate 6s linear 0s infinite;
+  text-decoration: none;
+  transition: all 300ms ease;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.nav__link:before {
+  content: "";
+  background: linear-gradient(45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-nav__link 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-nav__link {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 400% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.nav__link:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+.info-displayer-container {
+  width: min(100% - 2rem, 600px);
+  min-height: 401px;
+  background-color: var(--main-background-color);
+  margin: auto;
+  margin-top: 80px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px,
+    rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px,
+    rgba(240, 46, 170, 0.05) 25px 25px;
+}
+
+.info-displayer {
+  padding: 40px 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.location-name,
+.info__text {
+  color: white;
+  font-size: 1.8rem;
+}
+
+.info__text {
+  margin: 11px 0;
+  font-size: 1.4rem;
+}
+
+.error-message {
+  color: rgb(255, 112, 112);
+  font-weight: 700;
+  font-size: 1.2rem;
+  display: block;
+  text-align: center;
+}
+
+/* loader */
+.loader {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80px;
+  height: 80px;
+}
+
+.loader div {
+  position: absolute;
+  border: 4px solid #fcf;
+  opacity: 1;
+  border-radius: 50%;
+  animation: loader 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.loader div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+
+@keyframes loader {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  4.9% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  5% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 830px) {
+  .nav {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .nav-links {
+    max-width: 356px;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .info-displayer {
+    padding: 32px 28px;
+  }
 }
